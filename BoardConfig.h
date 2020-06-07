@@ -28,37 +28,16 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef M_SPI_H
-#define	M_SPI_H
+#ifndef XC_HEADER_TEMPLATE_H
+#define	XC_HEADER_TEMPLATE_H
+
+
+#define LED1        2     //PORTC
+#define LED2        3     //PORTD
+#define CheckLED    0     //PORTA
+
 
 #include <xc.h> // include processor files - each processor file is guarded.  
-
-/*Master_Slave_select*/
-#define _Slave    0
-#define _Master   1
-
-/*SPI Clock Rate Speed / Double Speed*/
-#define _SPI_X     0
-#define _SPI_2X    1
-
-/*SPR0 & SPR1 SPI Clock Rate*/
-#define SCK_Freq_1      0  //fastest focs/4
-#define SCK_Freq_2      1  // focs/16
-#define SCK_Freq_3      2  //focs/64
-#define SCK_Freq_4      3  //focs/128
-
-
-#define SS      4
-#define MOSI    5
-#define MISO    6
-#define SCK     7
-
-void SPI_Master_init( char _SPI_Speed, char SCK_Freq);
-void SPI_Slave_init( char _SPI_Speed, char SCK_Freq);
-void SPI_write(char data);
-char SPI_read();
-void SPI_readString(char *buffer);
-int checkData(char * cmpStr);
 
 // TODO Insert appropriate #include <>
 

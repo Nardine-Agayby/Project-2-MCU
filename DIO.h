@@ -28,37 +28,64 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef M_SPI_H
-#define	M_SPI_H
+#ifndef DIO
+#define	DIO
+
+#define OUT  1
+#define IN   0
+
+#define portA  1
+#define portB  2
+#define portC  3
+#define portD  4
+
+//set specific pins in port as High 
+void setPORTA(int data);
+void setPORTB(int data);
+void setPORTC(int data);
+void setPORTD(int data);
+
+//direction OUT ,IN
+void PORTAas(int dir);
+void PORTBas(int dir);
+void PORTCas(int dir);
+void PORTDas(int dir);
+
+//set specific pin direction as output or input
+void PINAas(int pinNum,int dir);
+void PINBas(int pinNum,int dir);
+void PINCas(int pinNum,int dir);
+void PINDas(int pinNum,int dir);
+
+//Returns status of input pin
+int isPressedA(int pinNum);
+int isPressedB(int pinNum);
+int isPressedC(int pinNum);
+int isPressedD(int pinNum);
+
+//set o/p pin as HIGH 
+void setPIN(int pinNum, char port);
+//reset o/p pin to LOW
+void resetPIN(int pinNum, char port);
+//toggle status of pin from low to high and vise versa
+void togglePIN(int pinNum, char port);
+
+
+//set output port to HIGH or reset to LOW
+void setPORT(char port);
+void resetPORT(char port);
+//toggle all port pins
+void togglePORT(char port);
+
+
+/*void setPINA(int pinNum);
+void setPINB(int pinNum);
+void setPINC(int pinNum);
+void setPIND(int pinNum);
+void _setPIN(int pinNum);
+void _resetPIN(int pinNum);*/
 
 #include <xc.h> // include processor files - each processor file is guarded.  
-
-/*Master_Slave_select*/
-#define _Slave    0
-#define _Master   1
-
-/*SPI Clock Rate Speed / Double Speed*/
-#define _SPI_X     0
-#define _SPI_2X    1
-
-/*SPR0 & SPR1 SPI Clock Rate*/
-#define SCK_Freq_1      0  //fastest focs/4
-#define SCK_Freq_2      1  // focs/16
-#define SCK_Freq_3      2  //focs/64
-#define SCK_Freq_4      3  //focs/128
-
-
-#define SS      4
-#define MOSI    5
-#define MISO    6
-#define SCK     7
-
-void SPI_Master_init( char _SPI_Speed, char SCK_Freq);
-void SPI_Slave_init( char _SPI_Speed, char SCK_Freq);
-void SPI_write(char data);
-char SPI_read();
-void SPI_readString(char *buffer);
-int checkData(char * cmpStr);
 
 // TODO Insert appropriate #include <>
 
